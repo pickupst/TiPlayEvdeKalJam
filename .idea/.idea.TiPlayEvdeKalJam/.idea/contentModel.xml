@@ -38,6 +38,7 @@
           </e>
           <e p="Level Scripts" t="Include">
             <e p="LevelGenerator.cs" t="Include" />
+            <e p="Platform.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
             <e p="PlayerMovement.cs" t="Include" />
