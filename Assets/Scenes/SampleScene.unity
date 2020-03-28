@@ -299,7 +299,8 @@ MonoBehaviour:
   simplePlatform: {fileID: 1389644367345877754, guid: a312498b35f55d741a78cff9d3022c89,
     type: 3}
   amountToSpawn: 100
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 6771479406313078431, guid: 78661dd2deddddf4ba1022d4b9c2fdb3,
+    type: 3}
 --- !u!4 &1512046812
 Transform:
   m_ObjectHideFlags: 0

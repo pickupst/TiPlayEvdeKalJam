@@ -62,6 +62,9 @@ public class LevelGenerator : MonoBehaviour
                 lastPos = newPlatform.transform.position;
                 
                 // create the player on this position
+                Vector3 temp = lastPos;
+                temp.y += 0.1f;
+                Instantiate(playerPrefab, temp, Quaternion.identity);
                 
                 continue;
             }
