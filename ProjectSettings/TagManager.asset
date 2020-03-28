@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EndPlatform
   - Coin
+  - Spike
   layers:
   - Default
   - TransparentFX
