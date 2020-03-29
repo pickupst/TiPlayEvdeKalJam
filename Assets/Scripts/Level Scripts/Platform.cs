@@ -15,6 +15,12 @@ public class Platform : MonoBehaviour
     private GameObject coin;
     
     private bool fallDown;
+
+    [SerializeField]
+    private float sprikeMinPos = 0.75f;
+    
+    [SerializeField]
+    private Vector3 coinOffSet = new Vector3(0, 5, 0);
     
     // Start is called before the first frame update
     void Start()
@@ -44,16 +50,16 @@ public class Platform : MonoBehaviour
                 fallDown = true;
             }else if (type == 3)
             {
-                
+                fallDown = true;
             }else if (type == 4)
             {
                 AddCoin();
             }else if (type == 5)
             {
-                
+                fallDown = true;
             }else if (type == 6)
             {
-                
+                fallDown = true;
             }else if (type == 7)
             {
                 AddCoin();
@@ -69,7 +75,8 @@ public class Platform : MonoBehaviour
         
         spikes[index].gameObject.SetActive(true);
 
-        spikes[index].DOLocalMoveY(0.7f, 1.3f).SetLoops(-1, LoopType.Yoyo).SetDelay(Random.Range(3f, 5f));
+        spikes[index].transform.position = new Vector3(spikes[index].transform.position.x, spikes[index].transform.position.y - sprikeMinPos, spikes[index].transform.position.z);
+        spikes[index].DOLocalMoveY(7f, 1.3f).SetLoops(-1, LoopType.Yoyo).SetDelay(Random.Range(1f, 3f));
 
     } // ActiviteSpike
 
@@ -79,11 +86,11 @@ public class Platform : MonoBehaviour
         GameObject c = Instantiate(coin);
         c.transform.position = transform.position;
         c.transform.SetParent(transform);
-        c.transform.DOLocalMoveY(1f, 0f);
+        c.transform.DOLocalMoveY(5f, 0f);
 
     } // Add caoin
 
-    void InvokeFalling()
+    public void InvokeFalling()
     {
         gameObject.AddComponent<Rigidbody>();
     }
@@ -97,7 +104,7 @@ public class Platform : MonoBehaviour
             if (fallDown)
             {
                 fallDown = false;
-                Invoke("InvokeFalling", 2f);
+                Invoke("InvokeFalling", 0.5f);
             }
             
         }

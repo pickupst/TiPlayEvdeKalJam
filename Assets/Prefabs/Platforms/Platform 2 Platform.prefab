@@ -629,4 +629,5 @@ MonoBehaviour:
   spikes:
   - {fileID: 517201896}
   - {fileID: 1707339833}
-  coin: {fileID: 179097629955061919, guid: 6e12c4fdae4ea6941842e10dd61aff11, type: 3}
+  coin: {fileID: 2145513241628628289, guid: 8c75ab8eacdf97a41a3e56394116f095, type: 3}
+  sprikeMinPos: 0.75

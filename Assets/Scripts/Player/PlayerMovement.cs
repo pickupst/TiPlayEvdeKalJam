@@ -29,6 +29,23 @@ public class PlayerMovement : MonoBehaviour
 
     void GetInput()
     {
+        if (Input.touchCount > 0)
+        {
+            var touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (touch.position.x < Screen.width/2)
+                {
+                    Jump(true);
+                }
+                else if (touch.position.x > Screen.width/2)
+                {
+                    Jump(false);
+                }
+            }
+            
+        }
+        
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             

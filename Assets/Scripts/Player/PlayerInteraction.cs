@@ -32,6 +32,7 @@ public class PlayerInteraction : MonoBehaviour
                 
                 //Gameover işlemleri yapılmalı ve sesi çalınmalı
                 SoundManager.instance.GameEndSound();
+                GameplayController.instance.RestartGame();
 
             }
             
@@ -47,6 +48,7 @@ public class PlayerInteraction : MonoBehaviour
             
             //Altın kazandık ses çal
             SoundManager.instance.PickedUpCoins();
+            GameplayController.instance.IncrementScore();
 
         }
 
@@ -58,6 +60,7 @@ public class PlayerInteraction : MonoBehaviour
             //Gameover olduk ses çal
             SoundManager.instance.GameEndSound();
             //oyunu tekrar başlat
+            GameplayController.instance.RestartGame();
         }
     } //Ontriggerenter
 
@@ -72,6 +75,7 @@ public class PlayerInteraction : MonoBehaviour
             SoundManager.instance.GameStartSound();
 
             //Next level
+            GameplayController.instance.RestartGame();
             
         }
         

@@ -1,10 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public GameObject[] players;
+    public AudioClip[] sounds;
+    
+    public GameObject DieSound;
+    
     [SerializeField]
     private GameObject startPlatform;
     [SerializeField]
@@ -25,9 +32,14 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField]
     private GameObject playerPrefab;
+
+    private float timer = 0;
+    private int index = 0;
     
     void Awake()
     {
+        switchPlayer();
+        
         InstantiateLevel();
     } // awake
 
@@ -53,7 +65,7 @@ public class LevelGenerator : MonoBehaviour
             }
 
             newPlatform.transform.parent = transform;
-            
+              
             spawnedPlatforms.Add(newPlatform);
 
             if (i == 0)
@@ -106,7 +118,37 @@ public class LevelGenerator : MonoBehaviour
         } // for loop
         
     } // instantiateLevel
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+
+        if ((index == 0 && timer >= 3) || (index > 0 && timer >= 0.35f))
+        {
+            timer = 0;
+            
+            if (spawnedPlatforms[index].GetComponent<Rigidbody>() == null)
+            {
+                spawnedPlatforms[index].gameObject.AddComponent<Rigidbody>();
+            }
+            
+            index++;
+        }
+    }
+
+    private void setPlayer(GameObject player)
+    {
+        playerPrefab = player;
+    }
     
+    void switchPlayer()
+    {
+        int index = Random.Range(0, players.Length);
+        
+        setPlayer(players[index]);
+        DieSound.GetComponent<AudioSource>().clip = sounds[index];
+
+    }
 } // class
 
 
